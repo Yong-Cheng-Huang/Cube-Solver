@@ -20,7 +20,7 @@ pip install -r requirements.txt
 
 1. **Start the Program**:
    ```bash
-   python test.py
+   python main.py
    ```
 
 2. **Scanning Process**:
