@@ -33,7 +33,7 @@ class RubikCubeScanner:
         }
 
     def classify_color(self, h, s, v):
-        """改進的顏色分類函數"""
+        """顏色分類"""
         cal = self.color_calibration
         
         if s < cal['white']['s_max'] and v > cal['white']['v_min']:
