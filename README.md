@@ -1,79 +1,76 @@
-# 魔術方塊掃描器與求解器
+# Rubik’s Cube Solver
 
-這是一個使用OpenCV和Kociemba的魔術方塊掃描與求解系統。
+A Rubik’s Cube scanning and solving system using OpenCV and the Kociemba algorithm.
 
-## 功能特色
+## Features
 
-- **六面掃描**: 按照URFDLB順序掃描魔術方塊的六個面
-- **顏色識別**: 自動識別白、紅、橙、黃、綠、藍六種顏色
-- **智能排序**: 自動將檢測到的9個方塊按3x3網格排序
-- **Kociemba求解**: 使用Kociemba算法求解魔術方塊
-- **即時顯示**: 實時顯示掃描狀態和檢測結果
+- **Six-face Scanning**: Scan all six faces of the Rubik’s Cube in URFDLB order
+- **Color Detection**: Automatically detects six colors — white, red, orange, yellow, green, and blue
+- **Smart Grid Sorting**: Automatically sorts 9 detected squares into a 3x3 grid
+- **Kociemba Solving**: Uses the Kociemba two-phase algorithm to solve the cube
+- **Real-time Display**: Shows live scanning status and detection results
 
-## 安裝需求
+## Installation Requirements
 
 ```bash
-pip install opencv-python numpy kociemba
+pip install -r requirements.txt
 ```
 
-## 使用方法
+## Usage
 
-1. **啟動程式**:
+1. **Start the Program**:
    ```bash
    python test.py
    ```
 
-2. **掃描流程**:
-   - 按 `s` 開始掃描模式
-   - 將魔術方塊的一面對準攝影機
-   - 確保檢測到9個方塊（綠色框框標示）
-   - 按 `n` 確認當前掃描並進入下一面
-   - 重複直到完成6個面的掃描
+2. **Scanning Process**:
+   - Press `s` to enter scanning mode
+   - Point one face of the cube toward the camera
+   - Ensure 9 squares are detected (indicated with green boxes)
+   - Press `n` to confirm the current face and proceed to the next
+   - Repeat until all 6 faces are scanned
 
-3. **求解魔術方塊**:
-   - 完成所有面掃描後，按 `solve` 開始求解
-   - 系統會顯示Kociemba格式的解法
+3. **Solving the Cube**:
+   - After scanning all faces, press `r` to solve
+   - The system will display the Kociemba solution sequence
 
-4. **退出程式**:
-   - 按 `q` 退出程式
+4. **Exit the Program**:
+   - Press q to quit
 
-## 顏色對應
+## Color Mapping
 
-| 顏色 | Kociemba代碼 | 說明 |
-|------|---------------|------|
-| 白色 | U | Up (頂面) |
-| 紅色 | R | Right (右面) |
-| 藍色 | F | Front (前面) |
-| 橙色 | L | Left (左面) |
-| 綠色 | B | Back (後面) |
-| 黃色 | D | Down (底面) |
+| Color  | Kociemba Code | Description     |
+|:------:|:-------------:|:---------------:|
+| White  | U             | Up (top face)   |
+| Red    | R             | Right face      |
+| Green  | F             | Front face      |
+| Orange | L             | Left face       |
+| Blue   | B             | Back face       |
+| Yellow | D             | Down (bottom face) |
 
-## 掃描順序
+## Scanning Order
 
-程式按照以下順序掃描魔術方塊的六個面：
-1. **U** (Up) - 頂面
-2. **R** (Right) - 右面  
-3. **F** (Front) - 前面
-4. **D** (Down) - 底面
-5. **L** (Left) - 左面
-6. **B** (Back) - 後面
+The program scans the cube in the following order:
+1. **U** (Up) - Top face
+2. **R** (Right) - Right face
+3. **F** (Front) - Front face
+4. **D** (Down) - Bottom face
+5. **L** (Left) - Left face
+6. **B** (Back) - Back face
 
-## 注意事項
+## Notes
 
-- 確保光線充足，避免陰影影響顏色識別
-- 魔術方塊應完整顯示在攝影機視野內
-- 每個面需要檢測到完整的9個方塊才能進行下一步
-- 如果顏色識別不準確，可以調整程式中的HSV閾值
+- Make sure the lighting is sufficient and avoid shadows, which can affect color detection.
 
-## 技術細節
+## Technical Details
 
-- **影像處理**: 使用OpenCV進行邊緣檢測和輪廓識別
-- **顏色分類**: 基於HSV色彩空間進行顏色識別
-- **方塊排序**: 使用網格算法將檢測到的方塊按3x3排列
-- **求解算法**: 使用Kociemba的兩階段算法求解魔術方塊
+- **Image Processing**: Uses OpenCV for edge detection and contour recognition
+- **Color Classification**: Uses HSV color space thresholds to classify colors
+- **Square Sorting**: Uses a grid-based algorithm to sort detected squares into a 3x3 layout
+- **Solving Algorithm**: Implements Kociemba’s two-phase algorithm
 
-## 故障排除
+## Troubleshooting
 
-1. **無法檢測到方塊**: 檢查光線條件和魔術方塊是否完整顯示
-2. **顏色識別錯誤**: 調整`classify_color`函數中的HSV閾值
-3. **求解失敗**: 檢查掃描結果是否正確，確保所有54個方塊都被正確識別 
+1. **No squares detected**: Check lighting conditions and ensure the cube face is fully visible
+2. **Incorrect color detection**: Adjust HSV thresholds in the `classify_color` function
+3. **Solving failure**: Verify that all 54 squares were scanned and classified correctly
