@@ -189,6 +189,7 @@ class RubikCubeScanner:
                     
                     # 在畫面上標示
                     cv2.drawContours(frame, [approx], -1, (0, 255, 0), 2)
+                    # cv2.putText(影像, 文字, 座標, 字型, 字元大小, 顏色, 線條種類)
                     cv2.putText(frame, f"{i+1}:{color_name}", (cx-20, cy),
                                 cv2.FONT_HERSHEY_SIMPLEX, 0.4, (255, 255, 255), 1)
             
@@ -287,7 +288,7 @@ class RubikCubeScanner:
                 
                 if len(square_contours) > 0:
                     cv2.putText(frame, "Detected Colors:", (10, y_offset + 200),
-                                cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 255), 2)
+                                cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 255), 2)
                     
                     # 顯示檢測到的顏色
                     for i, approx in enumerate(square_contours):
@@ -303,8 +304,8 @@ class RubikCubeScanner:
                             
                             color_name = self.classify_color(avg_h, avg_s, avg_v)
                             cv2.putText(frame, f"Square{i+1}: {color_name} (H:{int(avg_h)} S:{int(avg_s)} V:{int(avg_v)})", 
-                                        (10, y_offset + 220 + i * 20),
-                                        cv2.FONT_HERSHEY_SIMPLEX, 0.4, (255, 255, 255), 1)
+                                        (10, y_offset + 225 + i * 25),
+                                        cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 255, 255), 1)
 
             cv2.imshow("Rubik Cube Scanner", frame)
 
