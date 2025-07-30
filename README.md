@@ -35,7 +35,7 @@ pip install -r requirements.txt
    - The system will display the Kociemba solution sequence
 
 4. **Exit the Program**:
-   - Press q to quit
+   - Press `q` to quit
 
 ## Color Mapping
 
