@@ -93,7 +93,9 @@ class RubikCubeScanner:
             dy2 = pt2[1] - pt0[1]
             inner = dx1 * dx2 + dy1 * dy2
             norm = math.hypot(dx1, dy1) * math.hypot(dx2, dy2)
+            # 防止除以零的錯誤，加上一個很小的數
             cosine = inner / (norm + 1e-10)
+            # 使用 arccos 取得夾角（弧度），再轉成角度
             return np.arccos(cosine) * 180 / np.pi
 
         angles = []
