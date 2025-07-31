@@ -11,6 +11,7 @@ class RubikCubeScanner:
         self.face_colors = {face: [''] * 9 for face in self.faces}
         self.scanning_mode = False
         self.scan_complete = False
+        self.confirmed_faces = set()  # 追蹤已確認的面
         
         # 顏色校準參數
         self.color_calibration = {
@@ -265,9 +266,11 @@ class RubikCubeScanner:
             y_offset = 150
             for i, face in enumerate(self.faces):
                 colors = self.face_colors[face]
-                status = "OK" if all(c != '' for c in colors) else "X"
+                # 只有當顏色不為空且已經按下'n'確認時才顯示OK
+                status = "OK" if (all(c != '' and c != 'unknown' for c in colors) and face in self.confirmed_faces) else "X"
                 cv2.putText(frame, f"{face}: {status}", (10, y_offset + i * 30),
                             cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 255, 255), 2)
+                # print(face,self.face_colors[face])
             
             # 在掃描模式下顯示當前檢測到的顏色
             if self.scanning_mode:
@@ -319,9 +322,12 @@ class RubikCubeScanner:
             elif key == ord('s'):
                 self.scanning_mode = True
                 print("進入掃描模式")
-            elif key == ord('n') and self.scanning_mode:
+            elif key == ord('n') and self.scanning_mode and 'unknown' not in self.face_colors[self.faces[self.current_face]]:
                 if self.current_face < len(self.faces):
-                    print(f"完成掃描面 {self.faces[self.current_face]}")
+                    current_face_name = self.faces[self.current_face]
+                    print(f"完成掃描面 {current_face_name}")
+                    # 將當前面標記為已確認
+                    self.confirmed_faces.add(current_face_name)
                     self.current_face += 1
                     if self.current_face >= len(self.faces):
                         self.scan_complete = True
