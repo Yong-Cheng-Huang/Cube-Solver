@@ -288,12 +288,14 @@ class RubikCubeScanner:
                     if self.is_square(approx, area):
                         square_contours.append(approx)
                 
-                if len(square_contours) > 0:
-                    cv2.putText(frame, "Detected Colors:", (10, y_offset + 200),
-                                cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 255), 2)
-                    
+                sorted_squares = self.get_square_centers(square_contours)
+                
+                cv2.putText(frame, "Detected Colors:", (10, y_offset + 200),
+                            cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 255), 2)
+                
+                if len(sorted_squares) > 0:
                     # 顯示檢測到的顏色
-                    for i, approx in enumerate(square_contours):
+                    for i, (cx, cy, approx) in enumerate(sorted_squares):
                         x, y, w, h = cv2.boundingRect(approx)
                         margin = int(min(w, h) * 0.2)
                         roi = frame[y+margin:y+h-margin, x+margin:x+w-margin]
