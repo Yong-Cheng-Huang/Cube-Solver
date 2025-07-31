@@ -67,7 +67,7 @@ class RubikCubeScanner:
         """判斷是否為方形"""
         if len(approx) != 4:
             return False
-        if contour_area < 1000 or contour_area > 15000:
+        if contour_area < 1500 or contour_area > 20000:
             return False
 
         # 邊長比篩選
@@ -105,7 +105,7 @@ class RubikCubeScanner:
             angles.append(angle_deg)
 
         # 檢查所有角度是否都在 70-110 度範圍內
-        if not all(70 <= a <= 110 for a in angles):
+        if not all(80 <= a <= 100 for a in angles):
             return False
 
         return True
