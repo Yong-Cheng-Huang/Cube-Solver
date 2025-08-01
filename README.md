@@ -10,6 +10,10 @@ A Rubik’s Cube scanning and solving system using OpenCV and the Kociemba algor
 - **Kociemba Solving**: Uses the Kociemba two-phase algorithm to solve the cube
 - **Real-time Display**: Shows live scanning status and detection results
 
+## Demo
+<img width="500" alt="截圖 2025-08-01 09 40 59" src="https://github.com/user-attachments/assets/2e669fa1-5389-4b5d-89bf-43285309ddee" />
+<img width="500" alt="截圖 2025-08-01 09 43 14" src="https://github.com/user-attachments/assets/63de7dca-e9a6-4272-bc9c-a9eabfe6cd74" />
+
 ## Installation Requirements
 
 ```bash
