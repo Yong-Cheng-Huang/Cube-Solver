@@ -12,7 +12,9 @@ A Rubik’s Cube scanning and solving system using OpenCV and the Kociemba algor
 
 ## Demo
 <img width="500" alt="截圖 2025-08-01 09 40 59" src="https://github.com/user-attachments/assets/2e669fa1-5389-4b5d-89bf-43285309ddee" />
+
 <img width="500" alt="截圖 2025-08-01 20 22 36" src="https://github.com/user-attachments/assets/0f6b302e-e749-44ef-950b-6e4d1f1d662d" />
+
 <img width="500" alt="截圖 2025-08-01 20 20 22" src="https://github.com/user-attachments/assets/888913c3-f243-41bf-bb84-74eb35743117" />
 
 
